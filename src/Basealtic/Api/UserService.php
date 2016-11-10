@@ -1,8 +1,8 @@
 <?php
-namespace Basealtic\V1;
+namespace Basealtic\Api;
 
 
-class User extends ApiBase
+class UserService extends ApiBase
 {
 
     /**

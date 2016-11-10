@@ -1,53 +1,34 @@
 <?php namespace Basealtic\Rpc;
 
+use Basealtic\Api\UserService;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class RpcClientServiceProvider extends LaravelServiceProvider
 {
-
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
     protected $defer = false;
 
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
     public function boot()
     {
 
         $this->handleConfigs();
-        // $this->handleMigrations();
-        // $this->handleViews();
-        // $this->handleTranslations();
-        // $this->handleRoutes();
+
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
-
-        // Bind any implementations.
+        $this->app->singleton('UserService', function () {
+            $client = new RpcClient();
+            return new UserService($client);
+        });
+        $this->app->alias('UserService', UserService::class);
 
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
+
     public function provides()
     {
 
-        return [];
+        return ['UserService'];
     }
 
     private function handleConfigs()
@@ -60,29 +41,4 @@ class RpcClientServiceProvider extends LaravelServiceProvider
         $this->mergeConfigFrom($configPath, 'rpcclient');
     }
 
-    private function handleTranslations()
-    {
-
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'rpcclient');
-    }
-
-    private function handleViews()
-    {
-
-        $this->loadViewsFrom(__DIR__ . '/../views', 'rpcclient');
-
-        $this->publishes([__DIR__ . '/../views' => base_path('resources/views/vendor/rpcclient')]);
-    }
-
-    private function handleMigrations()
-    {
-
-        $this->publishes([__DIR__ . '/../migrations' => base_path('database/migrations')]);
-    }
-
-    private function handleRoutes()
-    {
-
-        include __DIR__ . '/../routes.php';
-    }
 }

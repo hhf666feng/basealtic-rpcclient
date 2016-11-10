@@ -1,8 +1,8 @@
 <?php
-namespace Basealtic\V1;
+namespace Basealtic\Api;
 
 
-class Message extends ApiBase
+class MessageService extends ApiBase
 {
 
     /**

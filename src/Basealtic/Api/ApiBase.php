@@ -1,5 +1,5 @@
 <?php
-namespace Basealtic\V1;
+namespace Basealtic\Api;
 
 use \Basealtic\Rpc\RpcClient;
 
