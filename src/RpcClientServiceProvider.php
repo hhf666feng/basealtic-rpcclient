@@ -1,8 +1,9 @@
-<?php namespace Vendor\Package;
+<?php namespace Basealtic\Rpc;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class ServiceProvider extends LaravelServiceProvider {
+class RpcClientServiceProvider extends LaravelServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -16,7 +17,8 @@ class ServiceProvider extends LaravelServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
 
         $this->handleConfigs();
         // $this->handleMigrations();
@@ -30,7 +32,8 @@ class ServiceProvider extends LaravelServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
 
         // Bind any implementations.
 
@@ -41,12 +44,14 @@ class ServiceProvider extends LaravelServiceProvider {
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
 
         return [];
     }
 
-    private function handleConfigs() {
+    private function handleConfigs()
+    {
 
         $configPath = __DIR__ . '/../config/rpcclient.php';
 
@@ -55,25 +60,29 @@ class ServiceProvider extends LaravelServiceProvider {
         $this->mergeConfigFrom($configPath, 'rpcclient');
     }
 
-    private function handleTranslations() {
+    private function handleTranslations()
+    {
 
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'rpcclient');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'rpcclient');
     }
 
-    private function handleViews() {
+    private function handleViews()
+    {
 
-        $this->loadViewsFrom(__DIR__.'/../views', 'rpcclient');
+        $this->loadViewsFrom(__DIR__ . '/../views', 'rpcclient');
 
-        $this->publishes([__DIR__.'/../views' => base_path('resources/views/vendor/rpcclient')]);
+        $this->publishes([__DIR__ . '/../views' => base_path('resources/views/vendor/rpcclient')]);
     }
 
-    private function handleMigrations() {
+    private function handleMigrations()
+    {
 
         $this->publishes([__DIR__ . '/../migrations' => base_path('database/migrations')]);
     }
 
-    private function handleRoutes() {
+    private function handleRoutes()
+    {
 
-        include __DIR__.'/../routes.php';
+        include __DIR__ . '/../routes.php';
     }
 }

@@ -5,5 +5,5 @@ return [
     'app_id' => '',
     'app_secret' => '',
     'sign_method' => 'md5',
-    'rpc_url' => 'http://base.ju-inc.com/api/v1'
+    'rpc_url' => ''
 ];
