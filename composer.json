@@ -25,5 +25,5 @@
       "Basealtic\\v1\\": "src/"
     }
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev-master"
 }
