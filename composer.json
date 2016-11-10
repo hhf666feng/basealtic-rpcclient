@@ -24,6 +24,6 @@
       "Basealtic\\Rpc\\": "src/",
       "Basealtic\\v1\\": "src/"
     }
-  },
-  "minimum-stability": "dev-master"
+  }
+  //,"minimum-stability": "dev-master"
 }
