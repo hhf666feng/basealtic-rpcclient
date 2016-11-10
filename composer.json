@@ -1,0 +1,29 @@
+{
+  "name": "basealtic/rpcclient",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "tanfan",
+      "email": "tanfan@ju-inc.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/config": "~5.0",
+    "illuminate/support": "~5.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Basealtic\\Rpc\\": "src/",
+      "Basealtic\\v1\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
