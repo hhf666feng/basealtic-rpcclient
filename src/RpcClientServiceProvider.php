@@ -1,6 +1,7 @@
 <?php namespace Basealtic\Rpc;
 
 use Basealtic\Api\UserService;
+use Basealtic\Facades\UserServiceFacade;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class RpcClientServiceProvider extends LaravelServiceProvider
@@ -20,7 +21,8 @@ class RpcClientServiceProvider extends LaravelServiceProvider
             $client = new RpcClient();
             return new UserService($client);
         });
-        $this->app->alias('UserService', UserService::class);
+        $this->app->alias('UserService', UserServiceFacade::class);
+
 
     }
 
