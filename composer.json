@@ -22,7 +22,8 @@
   "autoload": {
     "psr-4": {
       "Basealtic\\Rpc\\": "src/",
-      "Basealtic\\Api\\": "src/"
+      "Basealtic\\Api\\": "src/",
+      "Basealtic\\Facades\\": "src/"
     }
   }
 }
