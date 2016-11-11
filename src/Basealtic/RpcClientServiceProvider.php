@@ -22,8 +22,6 @@ class RpcClientServiceProvider extends LaravelServiceProvider
             return new UserService($client);
         });
         $this->app->alias('UserService', UserServiceFacade::class);
-
-
     }
 
 
