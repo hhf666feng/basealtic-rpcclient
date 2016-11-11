@@ -10,6 +10,7 @@ class RpcClient
     public $app_secret;
     public $sign_method;
     public $rpc_url;
+    public $api_version;
 
     function __construct()
     {
@@ -25,7 +26,6 @@ class RpcClient
         $_params = [
             "jsonrpc" => $this->rpc_version,
             "app_id" => $this->app_id,
-            "app_secret" => $this->app_secret,
             "sign_method" => $this->sign_method,
             "nonce" => Str::random(),
             "id" => Str::random(),
@@ -37,7 +37,7 @@ class RpcClient
         $_params['sign'] = $sign;
 
         $client = new \GuzzleHttp\Client();
-        $ret = $client->post($this->rpc_url . $_params['url'],
+        $ret = $client->post($this->rpc_url . '/' . $this->api_version . $_params['url'],
             [
                 'headers' => [
                     'User-Agent' => $_SERVER['HTTP_USER_AGENT']

@@ -5,5 +5,6 @@ return [
     'app_id' => '',
     'app_secret' => '',
     'sign_method' => 'md5',
-    'rpc_url' => ''
+    'rpc_url' => '',
+    'api_version' => 'v1'
 ];

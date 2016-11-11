@@ -15,6 +15,7 @@ class ApiBase
         $this->client->app_secret = config('rpcclient.app_secret');
         $this->client->sign_method = config('rpcclient.sign_method');
         $this->client->rpc_url = config('rpcclient.rpc_url');
+        $this->client->rpc_url = config('rpcclient.rpc_url');
     }
 
 

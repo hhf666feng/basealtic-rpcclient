@@ -1,7 +1,7 @@
 <?php namespace Basealtic\Rpc;
 
+use Basealtic\Api\MessageService;
 use Basealtic\Api\UserService;
-use Basealtic\Facades\UserServiceFacade;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class RpcClientServiceProvider extends LaravelServiceProvider
@@ -17,24 +17,26 @@ class RpcClientServiceProvider extends LaravelServiceProvider
 
     public function register()
     {
-        $this->app->singleton('UserService', function () {
-            $client = new RpcClient();
+        $client = new RpcClient();
+        $this->app->singleton('UserService', function () use ($client) {
             return new UserService($client);
         });
-        $this->app->alias('UserService', UserServiceFacade::class);
+        $this->app->singleton('MessageService', function () use ($client) {
+            return new MessageService($client);
+        });
     }
 
 
     public function provides()
     {
 
-        return ['UserService'];
+        return ['UserService', 'MessageService'];
     }
 
     private function handleConfigs()
     {
 
-        $configPath = __DIR__ . '/../config/rpcclient.php';
+        $configPath = __DIR__ . '/../../config/rpcclient.php';
 
         $this->publishes([$configPath => config_path('rpcclient.php')]);
 
